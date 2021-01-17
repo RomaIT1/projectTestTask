@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<title>Test</title>
+		<style>
+			[v-cloak] {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper" id='wrap' v-cloak>
+			<header class="header">
+				<div class="container">
+					<div class="header__inner">
+						<a class="header__logo-link" href="#">
+							<img class="header__logo" src="img/header/logo.png">
+						</a>
+						<div class="header__tel">
+							<a class="header__tel-link" href="tel:0988690025">
+								<img class="header__tel-img" src="img/header/tel.png">
+							</a>
+							<div class="header__tel-content">
+								<div class="header__tel-items">
+									<div class="header__tel-schedule">Графік роботи: 09:00-18:00</div>
+									<div class="header__tel-number">(098) 86 900 25</div>
+									<ul class="header__tel-list" :style='{display: displayPhone}'> 
+										<li>093 093 093 093</li>
+										<li>097 097 097 097</li>
+									</ul>
+								</div>
+								<div class="header__tel-arrow" @click='displayPhoneChange'>
+									<img src="img/header/arrow-white.png">
+								</div>
+							</div>
+						</div>
+						<div class="header__panel-active">
+							<div class="header__lang">
+								<div class="header__lang-flag header__lang-flag--ua">
+									<img src="img/header/lang-ua.png">
+								</div>
+								<div class="header__lang-change"  @click='displayLangChange'>
+									<ul class="header__lang-items">
+										<div class="header__lang-const-active">UA</div>		
+										<ul 
+										class="header__lang-items header__lang-items--additional" 
+										:style="{display: displayLang}">
+											<li class="header__lang-item header__lang-items--additional" style='display:none'>
+												<a class="header__lang-link" href="">UA</a>
+											</li>
+											<li class="header__lang-item header__lang-item--additional">
+												<a class="header__lang-link" href="#">RU</a>
+											</li>
+											<li class="header__lang-item header__lang-item--additional">
+												<a class="header__lang-link" href="#">EN</a>
+											</li>
+										</ul>
+									</ul>
+									<div class="header__lang-arrow">
+										<img src="img/header/arrow-red.png">
+									</div>
+								</div>
+							</div>
+							<nav class="header__nav">
+								<ul class="header__list-items">
+									<li class="header__list-item">
+										<a class="header__list-link" href='#'>ГОЛОВНА</a>
+									</li>
+									<li class="header__list-item">
+										<a class="header__list-link" href='#'>Компанія</a>
+
+									</li>
+								
+									<li class="header__list-item header__list-item--active">
+										<button 
+										class="header__list-link" 
+										href='#'
+										@click='displayChangeProduct'>Продукція</button>
+										<ul class="header__list-items header__list-items--additional" 
+										:style="{display: displayNavProduct}">
+											<li class="header__list-item header__list-item--additional">
+												<a class="header__list-link " href="#">Lorem 1</a>
+											</li>
+											<li class="header__list-item header__list-item--additional">
+												<a class="header__list-link" href="#">Lorem 2</a>
+											</li>
+											<li class="header__list-item header__list-item--additional">
+												<a class="header__list-link" href="#">Lorem 3</a>
+											</li>
+										</ul>
+									</li>
+								
+									<li class="header__list-item header__list-item--active">
+										<button 
+										class="header__list-link"
+										@click='displayChangeSupport'
+										>Підтримка</button>
+										<ul class="header__list-items header__list-items--additional" 
+										:style="{display: displayNavSupport}">
+											<li class="header__list-item header__list-item--additional">
+												<a class="header__list-link" href="#">lorem 1</a>
+											</li>
+											<li class="header__list-item header__list-item--additional">
+												<a class="header__list-link" href="#">lorem 2</a>
+											</li>
+											<li class="header__list-item header__list-item--additional">
+												<a class="header__list-link" href="#">lorem 3</a>
+											</li>
+										</ul>
+									</li>
+									<li class="header__list-item">
+										<a class="header__list-link" href='#'>Контакты</a>
+									</li>
+								</ul>
+							</nav>
+							<div class="header__burger-menu">
+								<div class="header__burger-front" @click="displayChangeProduct">
+									<div class="header__burger-field"></div>
+									<div class="header__burger-field"></div>
+									<div class="header__burger-field"></div>
+								</div>
+								<ul 
+								class="header__burger-items" 
+								:style="{display: displayNavProduct}"
+								>
+									<li class="header__burger-item header__list-item">
+										<a class="header__burger-link header__list-link" href="#">ГОЛОВНА</a>
+									</li>
+									<li class="header__burger-item header__list-item">
+										<a class="header__burger-link header__list-link" href="#">Компанія</a>
+									</li>
+									<li class="header__burger-item header__list-item">
+										<a class="header__burger-link header__list-link" href="#">Продукція</a>
+									</li>
+									<li class="header__burger-item header__list-item">
+										<a class="header__burger-link header__list-link" href="#">Підтримка</a>
+									</li>
+									<li class="header__burger-item header__list-item">
+										<a class="header__burger-link header__list-link" href="#">Контакти</a>
+									</li>
+								</ul>
+							</div>
+							<img @click='displaySearchChange' class="header__search" src="img/header/search-s.svg">
+							<form class="header__form" :style="{display: displaySearch}">
+								<div class="header__form-container">
+									<input class="header__form-input" type="text">
+									<button class="header__form-btn btn" type="submit">НАЙТИ</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</header>
+			<section class="slider slider__position">
+				<div class="slider__main-content slider-content">
+					<div class="container_">
+						<div class="slider-content__inner swiper-container">
+							<div class="slider-content__main swiper-wrapper">
+								<div class="slider__slide swiper-slide">
+									<div class="slider__slide-container--main">
+										<div class="slider-content__title title">ПРОМИСЛОВЕ</div>
+										<h1 class="slider-content__main-title">Кліматичне Обладнання</h1>
+										<p class="slider-content__text text">
+											Працює з кращими постачальниками комплектуючих
+											з усього світу, розробляє обладнання стандартного і
+											не стандартного виконання.
+										</p>
+										<a class="slider-content__next-btn btn" href="#">ДЕТАЛЬНІШЕ</a>
+									</div>
+								</div>
+								<div class="slider__slide swiper-slide">
+									<div class="slider__slide-container">
+										<div class="slider-content__title title">ПРОМИСЛОВЕ</div>
+										<h1 class="slider-content__main-title">Кліматичне Обладнання</h1>
+										<p class="slider-content__text text">
+											Працює з кращими постачальниками комплектуючих
+											з усього світу, розробляє обладнання стандартного і
+											не стандартного виконання.
+										</p>
+										<a class="slider-content__next-btn btn" href="#">ДЕТАЛЬНІШЕ</a>
+									</div>
+								</div>
+								<div class="slider__slide swiper-slide">
+									<div class="slider__slide-container">
+										<div class="slider-content__title title">ПРОМИСЛОВЕ</div>
+										<h1 class="slider-content__main-title">Кліматичне Обладнання</h1>
+										<p class="slider-content__text text">
+											Працює з кращими постачальниками комплектуючих
+											з усього світу, розробляє обладнання стандартного і
+											не стандартного виконання.
+										</p>
+										<a class="slider-content__next-btn btn" href="#">ДЕТАЛЬНІШЕ</a>
+									</div>
+								</div>
+								<div class="slider__slide swiper-slide">
+									<div class="slider__slide-container">
+										<div class="slider-content__title title">ПРОМИСЛОВЕ</div>
+										<h1 class="slider-content__main-title">Кліматичне Обладнання</h1>
+										<p class="slider-content__text text">
+											Працює з кращими постачальниками комплектуючих
+											з усього світу, розробляє обладнання стандартного і
+											не стандартного виконання.
+										</p>
+										<a class="slider-content__next-btn btn" href="#">ДЕТАЛЬНІШЕ</a>
+									</div>
+								</div>
+							</div>
+							<div class="slider__pagination swiper-pagination"></div>
+						</div>
+					</div>
+				</div>
+				<div class="slider__property slider-property">
+					<div class="container_">
+						<div class="slider-property__inner">
+							<div class="slider-property__column">
+								<img class="slider-property__img slider-property__img--first" src="img/slider/img-1.png">
+								<div class="slider-property__title sub-title">Якість</div>
+								<div class="slider-property__text text">
+									Обладнання складається 
+									з комплектуючих
+									європейського рівня.
+								</div>
+							</div>
+							<div class="slider-property__column">
+								<img class="slider-property__img" src="img/slider/img-2.png">
+								<div class="slider-property__title sub-title">Гарантія</div>
+								<div class="slider-property__text text">
+									Продукти Trevent мають
+									24 місяці гарантії.
+								</div>
+							</div>
+							<div class="slider-property__column">
+								<img class="slider-property__img" src="img/slider/img-3.png">
+								<div class="slider-property__title sub-title">Підтримка</div>
+								<div class="slider-property__text text">
+									Кваліфікований персонал
+									завжди готовий допомогти.
+								</div>
+							</div>
+							<div class="slider-property__column">
+								<img class="slider-property__img" src="img/slider/img-4.png">
+								<div class="slider-property__title sub-title">Технологія</div>
+								<div class="slider-property__text text">
+									Використовуються сучасні
+									технології та матеріали.
+								</div>
+							</div>
+						</div>
+					</div>
+				<div class="separation-main">
+					<div class="separator"></div>
+				</div>
+				</div>
+			</section>
+			<section class="product-section">
+				<div class="product-section__layer">
+					<div class="product">
+						<div class="container">
+							<div class="product__inner">
+								<div class="product__title title">ПРОДУКЦІЯ</div>
+								<div class="product__text text">
+									Використання електрики в якості джерела нагріву отримало свою популярність в деяких випадках. Такі рішення застосовують для реалізації системи опалення в умовах, де немає можливості підключення традиційного теплоносія (води) або де системи опалення планується використовувати тимчасово.
+								</div>
+								<div class="product__content">
+									<div class="product__column">	
+										<img class="product__column-img" src="img/product/img-1.jpg">
+										<div class="product__column-title sub-title">ЕЛЕКТРИЧНИЙ НАГРІВ</div>
+										<div class="product__more">
+											<div class="product__layer-color">
+												<img class="product__more-img" src="img/product/icon-1.png">
+												<div class="product__more-title">ЕЛЕКТРИЧНИЙ НАГРІВ</div>
+												<div class="product__more-text text">
+													Використання електрики в якості
+													джерела нагріву отримало власну
+													популярність в деяких випадках. 
+												</div>
+												<a class="product__more-btn btn" href="#">ДЕТАЛЬНІШЕ</a>
+											</div>
+										</div>	
+									</div>
+									<div class="product__column">
+										<img class="product__column-img product__column-img--symvol" src="img/product/img-2.jpg">
+										<div class="product__column-title sub-title">ВОДЯНІ ТЕПЛОНОСІЇ</div>
+										<div class="product__more">
+											<div class="product__layer-color">
+												<img class="product__more-img" src="img/product/icon-1.png">
+												<div class="product__more-title">ВОДЯНІ ТЕПЛОНОСІЇ</div>
+												<div class="product__more-text text">
+													Використання електрики в якості
+													джерела нагріву отримало власну
+													популярність в деяких випадках. 
+												</div>
+												<a class="product__more-btn btn" href="#">ДЕТАЛЬНІШЕ</a>
+											</div>
+										</div>
+									</div>
+									<div class="product__column">
+										<img class="product__column-img" src="img/product/img-3.jpg">
+										<div class="product__column-title sub-title">ПОВІТРЯНІ ЗАВІСИ</div>
+										<div class="product__more">
+											<div class="product__layer-color">
+												<img class="product__more-img" src="img/product/icon-1.png">
+												<div class="product__more-title">ПОВІТРЯНІ ЗАВІСИ</div>
+												<div class="product__more-text text">
+													Використання електрики в якості
+													джерела нагріву отримало власну
+													популярність в деяких випадках. 
+												</div>
+												<a class="product__more-btn btn" href="#">ДЕТАЛЬНІШЕ</a>
+											</div>
+										</div>
+									</div>
+									<div class="product__column">			
+										<img class="product__column-img" src="img/product/img-1.jpg">
+										<div class="product__column-title sub-title">КАМЕРИ ПРИПЛИВУ</div>
+										<div class="product__more">
+											<div class="product__layer-color">
+												<img class="product__more-img" src="img/product/icon-1.png">
+												<div class="product__more-title">КАМЕРИ ПРИПЛИВУ</div>
+												<div class="product__more-text text">
+													Використання електрики в якості
+													джерела нагріву отримало власну
+													популярність в деяких випадках. 
+												</div>
+												<a class="product__more-btn btn" href="#">ДЕТАЛЬНІШЕ</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="separation-main">
+							<div class="separator"></div>
+						</div>
+					</div>
+					<div class="brand">
+						<div class="container">
+							<div class="brand__inner">
+								<div class="brand__title title">НАМ ДОВІРЯЮТЬ</div>
+								<div class="brand__slider-container swiper-container">
+									<div class="brand__items swiper-wrapper">
+										<div class="brand__slide swiper-slide">		
+											<div class="brand__item-img">						
+												<img src="img/brand/logo-1.png">
+											</div>	
+										</div>
+										<div class="brand__slide swiper-slide">
+											<div class="brand__item-img">						
+												<img src="img/brand/logo-2.png">
+											</div>
+										</div>
+										<div class="brand__slide swiper-slide">
+											<div class="brand__item-img">						
+												<img src="img/brand/logo-3.png">
+											</div>
+										</div>
+										<div class="brand__slide swiper-slide">
+											<div class="brand__item-img">						
+												<img src="img/brand/logo-4.png">
+											</div>
+										</div>
+										<div class="brand__slide swiper-slide">	
+											<div class="brand__item-img">						
+												<img src="img/brand/logo-1.png">
+											</div>								
+										</div>
+										<div class="brand__slide swiper-slide">
+											<div class="brand__item-img">						
+												<img src="img/brand/logo-2.png">
+											</div>
+										</div>
+										<div class="brand__slide swiper-slide">
+											<div class="brand__item-img">						
+												<img src="img/brand/logo-3.png">
+											</div>
+										</div>
+										<div class="brand__slide swiper-slide">
+											<div class="brand__item-img">						
+												<img src="img/brand/logo-4.png">
+											</div>
+										</div>
+									</div>
+									<div class="brand__slider-arrow swiper-button-prev"></div>
+									<div class="brand__slider-arrow swiper-button-next"></div>
+								</div>
+							</div>	
+						</div>
+					</div>
+				</div>
+				<div class="separation-main">
+					<div class="separator"></div>
+				</div>
+			</section>
+			<footer class="footer">
+				<div class="container_">
+					<div class="footer__inner">
+						<img class="footer__logo" src="img/footer/logo.png">
+						<div class="footer__nav">
+							<ul class="footer__list-items">
+								<li class="footer__list-item">
+									<a class="footer__list-link" href="#">Компанія</a>
+								</li>
+								<li class="footer__list-item">
+									<a class="footer__list-link" href="#">Продукція</a>
+								</li>
+								<li class="footer__list-item">
+									<a class="footer__list-link" href="#">Рішеня</a>
+								</li>
+								<li class="footer__list-item">
+									<a class="footer__list-link" href="#">Підтримка</a>
+								</li>
+								<li class="footer__list-item">
+									<a class="footer__list-link" href="#">Питання <span>та відповіді</span></a>
+								</li>
+								<li class="footer__list-item">
+									<a class="footer__list-link" href="#">Контакти</a>
+								</li>
+							</ul>
+						</div>
+						<div class="footer__social-items">
+							<a class="footer__social-link" href="#">
+								<img class="footer__social-img" src="img/footer/f.png">
+							</a>
+							<a class="footer__social-link" href="#">
+								<img class="footer__social-img" src="img/footer/y.png">
+							</a>
+						</div>
+						<div class="footer__copywrite">
+							© TREVENT, 2019. Дизайн розробляли ONCA
+						</div>
+						<div class="footer__scroll" @click='scrollUp'>
+							<img class="footer__scroll-img" src="img/footer/arrow.png">
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+		<script src="https://unpkg.com/vue@next"></script>
+		<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+		<script src="js/script.js"></script>
+		<script>
+
+			function widthChange() {
+				let widthClient =  document.documentElement.clientWidth
+				let slidesValue
+
+				if (widthClient < 1000) {
+					return slidesValue = 1
+				}
+				else {
+					return slidesValue = 4
+				}
+			}
+
+			new Swiper('.slider-content__inner', {
+				pagination: {
+					el: '.swiper-pagination',
+					clickable: true
+				}
+			})
+			new Swiper('.brand__slider-container', {
+				navigation: {
+					nextEl: '.swiper-button-next',
+					prevEl: '.swiper-button-prev'
+				},
+				slidesPerView: widthChange(),
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,52 @@
+/*------Обнуляющие стили------*/
+@import 'null-style.scss';
+
+/*------FONTS (файл находится в папке fonts)------*/
+@import '../../fonts/fonts-main.css';
+
+/*------Переменные------*/
+
+/*-Ширина ограничивающего контейнера-*/
+$container: 1470px;
+$container_: 1230px;
+
+/*-Цвет фона-*/
+
+
+/*-Цвет шрифта-*/
+$c-def: #ffffff;
+
+/*-Размер шрифта-*/
+$fz-def: 19px;
+
+/*-Семейство шрифтов-*/
+$ff-def: 'Segoe'; 
+$ff-sec: 'Segoe black';
+$ff-nav: 'Clear';
+
+/*------Миксины------*/
+
+
+/*------Контейнеры и оболочки------*/
+.wrapper {
+	max-width: 100%;
+	min-height: 100%;
+	overflow: hidden;
+}
+.container {
+	max-width: $container;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+.container_ {
+	max-width: $container_;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+body {
+	font-family: $ff-def;
+	font-weight: 400;
+}
+
+
+
