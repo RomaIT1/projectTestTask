@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*------Обнуляющие стили------*/
 /*Обнуление*/
-@import url(../../fonts/fonts-main.css);
+@import url(../fonts/fonts-main.css);
 * {
 		padding: 0;
 		margin: 0;
